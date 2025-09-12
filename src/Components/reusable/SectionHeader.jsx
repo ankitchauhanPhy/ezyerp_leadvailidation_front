@@ -3,7 +3,7 @@ import { ChevronDown, RotateCcw } from 'lucide-react';
 
 const SectionHeader = ({ icon, title }) => {
   return (
-    <div className="flex items-center justify-between mb-3">
+    <div className="flex items-center justify-between mb-3 border-b border-gray-200 py-2">
       {/* Left: Icon + Title */}
       <div className="flex items-center gap-2 min-w-0">
         <div className="w-7 h-7 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">

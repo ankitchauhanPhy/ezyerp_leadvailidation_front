@@ -11,23 +11,26 @@ import {
   HelpCircle,
 } from "lucide-react";
 import HomePage from "../pages/HomePage";
+import Setting from "./SettingsPage";
+
 // import Calls from "../pages/Calls";
 import ezylogo from "../assets/ezylogo.svg";
+import ezycirclelogo from "../assets/circularLogo.png";
+import SettingsPage from "./SettingsPage";
 
 // Main Dashboard Component
-const ResponsiveDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+const Dashboard = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("Home");
   const [isMobile, setIsMobile] = useState(false);
 
   // Navigation items
   const navItems = [
-    { text: "Home", icon: <Home size={20} />, page: "Home" },
+    { text: "Dashboard", icon: <Home size={20} />, page: "Home" },
     { text: "Calls", icon: <Phone size={20} />, page: "Calls" },
-    { text: 'Leads', icon: <Target size={20} />, page: 'Leads' },
-    { text: 'Settings', icon: <Settings size={20} />, page: 'Settings' },
-    { text: 'Help & Support', icon: <HelpCircle size={20} />, page: 'Help' },
+    { text: "Leads", icon: <Target size={20} />, page: "Leads" },
+    { text: "Settings", icon: <Settings size={20} />, page: "Settings" },
   ];
 
   // Check screen size
@@ -66,13 +69,15 @@ const ResponsiveDashboard = () => {
     switch (currentPage) {
       case "Home":
         return <HomePage />;
+      case "Settings":
+        return <SettingsPage />;
       default:
         return <HomePage />;
     }
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 relative">
+    <div className="flex h-screen relative">
       {/* Desktop Sidebar - Fixed Position */}
       <div
         className={`hidden md:flex flex-col fixed left-0 top-0 h-full transition-all duration-300 ease-in-out z-40 ${
@@ -84,14 +89,16 @@ const ResponsiveDashboard = () => {
           <div className="flex items-center justify-between">
             {sidebarOpen ? (
               <>
-                <div className="flex items-center space-x-3">
+                <div className="flex flex-col items-center justify-center space-y-2">
                   <div>
                     <img
-                      src={ezylogo}
+                      src={ezycirclelogo}
                       alt="Cyboard School"
-                      className="py-2 px-2 bg-white rounded-md"
+                      className="py-2 px-2 rounded-md"
                     />
                   </div>
+                  <span className="text-sm">Powered By</span>
+                  <span className="text-md font-bold">Pharynx AI</span>
                 </div>
                 <button
                   onClick={() => setSidebarOpen(false)}
@@ -138,9 +145,7 @@ const ResponsiveDashboard = () => {
         {/* Footer */}
         {sidebarOpen && (
           <div className="p-4 border-t border-[#F8F5FF]-500/30">
-            <div className="text-xs text-[#F8F5FF] text-center">
-              © 2025 PHARYNXAI
-            </div>
+            <div className="text-xs text-[#F8F5FF]">© Help & Support</div>
           </div>
         )}
       </div>
@@ -152,7 +157,6 @@ const ResponsiveDashboard = () => {
             onClick={() => setMobileMenuOpen(false)}
           >
             {" "}
-            Hello WOrld
           </div>
           <div className="relative w-72 bg-gradient-to-b from-orange-600 to-orange-700 text-white shadow-2xl">
             <div className="flex flex-col h-full">
@@ -239,12 +243,10 @@ const ResponsiveDashboard = () => {
         </header>
 
         {/* Page Content - Scrollable */}
-        <main className="flex-1 overflow-y-auto bg-gray-50">
-          <div className="min-h-full bg-orange-50">{renderPage()}</div>
-        </main>
+        <main className="h-fit bg-[#F8F5FF]">{renderPage()}</main>
       </div>
     </div>
   );
 };
 
-export default ResponsiveDashboard;
+export default Dashboard;

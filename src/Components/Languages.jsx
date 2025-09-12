@@ -5,10 +5,15 @@ import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
-  Legend
-} from "chart.js";
+  Legend,
+  registerables // <- this registers everything
+} from 'chart.js';
+
+
 import { languageData } from "../constants";
 import SectionHeader from "./reusable/SectionHeader";
+
+ChartJS.register(...registerables);
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -66,8 +71,9 @@ const Languages = () => {
     });
 
     return () => {
-      chartInstance.current?.destroy();
-    };
+    chartInstance.current?.destroy();
+    chartInstance.current = null;
+  };
   }, []);
 
   return (
@@ -80,7 +86,7 @@ const Languages = () => {
       />
 
       {/* Chart & Legend */}
-      <div className="flex flex-col lg:flex-row gap-6 items-center justify-between mb-1 w-full">
+      <div className="flex flex-col gap-6 items-center justify-between mb-1 w-full">
         <div className="relative w-full">
           <canvas ref={chartRef} className="w-[160px] h-[190px]"></canvas>
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
@@ -107,28 +113,6 @@ const Languages = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[200px] text-sm">
-          <thead>
-            <tr className="border-b border-gray-200 text-gray-700">
-              <th className="py-1.5 px-2 font-semibold text-left">Language</th>
-              <th className="py-1.5 px-2 font-semibold text-left">Leads</th>
-              <th className="py-1.5 px-2 font-semibold text-left">Bot Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {languageData.map((item, index) => (
-              <tr key={index} className="border-b border-gray-100 last:border-none">
-                <td className="py-1 px-1 font-medium text-gray-800">{item.language}</td>
-                <td className="py-1 px-2 font-medium text-gray-800">{item.leads}</td>
-                <td className="py-1 px-2 text-gray-600">{item.botName}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );

@@ -13,10 +13,10 @@ const Header = () => {
         </h1>
 
         {/* Active Calls */}
-        <div className="flex items-center px-3 py-1 rounded-full border-2 border-[#5D17EA] self-start md:self-auto w-max">
+        {/* <div className="flex items-center px-3 py-1 rounded-full border-2 border-[#5D17EA] self-start md:self-auto w-max">
           <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
           <span className="text-sm md:text-md text-[#5D17EA]">Active Calls: 3</span>
-        </div>
+        </div> */}
 
         {/* Sort + Export */}
         <div className="flex sm:flex-row sm:items-center sm:gap-4 gap-2">

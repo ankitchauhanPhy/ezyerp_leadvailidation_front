@@ -1,93 +1,76 @@
-import React, { useEffect, useRef } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { ChevronDown, Magnet } from "lucide-react";
+import React from "react";
+import { RotateCcw, ChevronDown, ArrowUpDown } from "lucide-react";
+import { FaRegArrowAltCircleDown, FaRegArrowAltCircleUp } from "react-icons/fa";
+import { MdSupportAgent } from "react-icons/md";
+import { agents } from "../constants";
 import SectionHeader from "./reusable/SectionHeader";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-const Leads = () => {
-  const chartRef = useRef(null);
-  const chartInstance = useRef(null);
-
-  const data = {
-    labels: ["Hot Lead", "Warm Lead", "Cold Lead"],
-    datasets: [
-      {
-        label: "Leads",
-        data: [30, 60, 10],
-        backgroundColor: ["#dc2626", "#f59e0b", "#3b82f6"],
-        borderWidth: 4,
-        borderColor: "#ffffff",
-        cutout: "65%",
-        hoverOffset: 15,
-      },
-    ],
-  };
-
-  const options = {
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem) {
-            return `${tooltipItem.label}: ${tooltipItem.raw}%`;
-          },
-        },
-      },
-    },
-  };
-
-  useEffect(() => {
-    const ctx = chartRef.current.getContext("2d");
-
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    chartInstance.current = new ChartJS(ctx, {
-      type: "doughnut",
-      data,
-      options,
-    });
-  }, []);
-
+const AgentTable = () => {
   return (
-    <div className="bg-white rounded-xl shadow-md p-3">
+    <div className="bg-white rounded-xl shadow-md p-2 md:p-3 h-full flex flex-col">
       {/* Header */}
-     <SectionHeader
-      icon={  <Magnet className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
-      }
-      title={"Leads"}
+      <SectionHeader
+        icon={
+          <MdSupportAgent className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+        }
+        title={"Last 10 Leads"}
       />
-      {/* Chart */}
-      <div className="h-48 relative">
-        <canvas ref={chartRef} />
+
+      {/* Table Header */}
+      <div className="grid grid-cols-12 gap-3 py-3 border-b border-gray-200 bg-gray-50 -mx-2 md:-mx-3 px-2 md:px-3">
+        <div className="col-span-1">
+          <span className="text-sm font-medium text-gray-600">#</span>
+        </div>
+        <div className="col-span-3">
+          <span className="text-sm font-medium text-gray-600">Name</span>
+        </div>
+        <div className="col-span-4">
+          <span className="text-sm font-medium text-gray-600">Phone Number</span>
+        </div>
+        <div className="col-span-4 flex items-center gap-1">
+          <span className="text-sm font-medium text-gray-600">Company Name</span>
+          <ArrowUpDown className="w-3 h-3 text-gray-400" />
+        </div>
       </div>
 
-      {/* Legend */}
-      <div className="mt-9 space-y-2 text-sm font-medium py-2">
-        <div className="flex items-center justify-between text-gray-700">
-          <span>
-            <span className="text-lg text-gray-800 font-bold">30%</span> Hot Lead
-          </span>
-          <span className="h-1 w-16 bg-red-600 rounded-full" />
-        </div>
-        <div className="flex items-center justify-between text-gray-700">
-          <span>
-            <span className="text-lg text-gray-800 font-bold">60%</span> Warm Lead
-          </span>
-          <span className="h-1 w-16 bg-amber-500 rounded-full" />
-        </div>
-        <div className="flex items-center justify-between text-gray-700">
-          <span>
-            <span className="text-lg text-gray-800 font-bold">10%</span> Cold Lead
-          </span>
-          <span className="h-1 w-16 bg-blue-500 rounded-full" />
-        </div>
+      {/* Leads List - Now takes remaining space */}
+      <div className="overflow-y-auto flex-1 min-h-0">
+        {agents.slice(0, 10).map((agent, index) => (
+          <div
+            key={agent.id}
+            className="grid grid-cols-12 gap-3 py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors items-center"
+          >
+            {/* Serial Number */}
+            <div className="col-span-1">
+              <span className="text-sm text-gray-800">{index + 1}.</span>
+            </div>
+
+            {/* Name */}
+            <div className="col-span-3">
+              <span className="text-sm text-gray-800 font-medium">
+                {agent.name}
+              </span>
+            </div>
+
+            {/* Phone Number with Flag */}
+            <div className="col-span-4 flex items-center gap-2">
+              <div className="w-5 h-3 bg-gradient-to-b from-orange-400 via-white to-green-500 rounded-sm border border-gray-200 flex-shrink-0"></div>
+              <span className="text-sm text-gray-800">
+                {agent.phone}
+              </span>
+            </div>
+
+            {/* Company Name */}
+            <div className="col-span-4">
+              <span className="text-sm text-gray-800">
+                {agent.company || "PharynxAI Pvt. Ltd."}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Leads;
+export default AgentTable;
