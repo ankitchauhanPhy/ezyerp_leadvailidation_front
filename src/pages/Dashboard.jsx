@@ -17,6 +17,7 @@ import Setting from "./SettingsPage";
 import ezylogo from "../assets/ezylogo.svg";
 import ezycirclelogo from "../assets/circularLogo.png";
 import SettingsPage from "./SettingsPage";
+import FAQPage from "./FAQPage";
 
 // Main Dashboard Component
 const Dashboard = () => {
@@ -71,6 +72,8 @@ const Dashboard = () => {
         return <HomePage />;
       case "Settings":
         return <SettingsPage />;
+      case "FAQ":
+        return <FAQPage />;
       default:
         return <HomePage />;
     }
@@ -145,7 +148,9 @@ const Dashboard = () => {
         {/* Footer */}
         {sidebarOpen && (
           <div className="p-4 border-t border-[#F8F5FF]-500/30">
-            <div className="text-xs text-[#F8F5FF]">© Help & Support</div>
+            <button 
+              onClick={() => handleNavigation("FAQ")}
+            className="text-xs text-[#F8F5FF]">© Help & Support</button>
           </div>
         )}
       </div>
