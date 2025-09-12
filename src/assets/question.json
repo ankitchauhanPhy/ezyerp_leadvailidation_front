@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is PharynxAI?",
+    "answer": "PharynxAI is an AI-powered voice assistant designed to handle inbound and outbound calls intelligently."
+  },
+  {
+    "question": "How can I make a call using this system?",
+    "answer": "Simply enter a 10-digit mobile number and click the 'Call' button to initiate an outbound call."
+  },
+  {
+    "question": "Can I choose between male and female bot voices?",
+    "answer": "Yes, you can select either a male or female voice before making a call."
+  },
+  {
+    "question": "What happens if the number is invalid or not reachable?",
+    "answer": "The system will show an error notification and will not place the call."
+  },
+  {
+    "question": "Is the call recording or call summary feature available?",
+    "answer": "Yes, all calls are recorded and processed for summaries and transcripts to help improve future interactions."
+  }
+]
