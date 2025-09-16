@@ -18,7 +18,6 @@ const HomePage = () => {
         <div className="w-[25%]">
           <Languages />
         </div>
-
         <div className="w-[25%]">
           <TotalCalls />
         </div>

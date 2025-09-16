@@ -9,6 +9,7 @@ import {
   Target,
   Settings,
   HelpCircle,
+  CircleHelp,
 } from "lucide-react";
 import HomePage from "../pages/HomePage";
 import Setting from "./SettingsPage";
@@ -18,6 +19,9 @@ import ezylogo from "../assets/ezylogo.svg";
 import ezycirclelogo from "../assets/circularLogo.png";
 import SettingsPage from "./SettingsPage";
 import FAQPage from "./FAQPage";
+import CallsPage from "./CallsPage";
+import LeadsPage from "./LeadsPage";
+import { MdOutlineDashboard } from "react-icons/md";
 
 // Main Dashboard Component
 const Dashboard = () => {
@@ -28,7 +32,7 @@ const Dashboard = () => {
 
   // Navigation items
   const navItems = [
-    { text: "Dashboard", icon: <Home size={20} />, page: "Home" },
+    { text: "Dashboard", icon: <MdOutlineDashboard size={20} />, page: "Home" },
     { text: "Calls", icon: <Phone size={20} />, page: "Calls" },
     { text: "Leads", icon: <Target size={20} />, page: "Leads" },
     { text: "Settings", icon: <Settings size={20} />, page: "Settings" },
@@ -70,6 +74,10 @@ const Dashboard = () => {
     switch (currentPage) {
       case "Home":
         return <HomePage />;
+      case "Calls":
+        return <CallsPage />;
+      case "Leads":
+        return <LeadsPage />;
       case "Settings":
         return <SettingsPage />;
       case "FAQ":
@@ -147,10 +155,14 @@ const Dashboard = () => {
 
         {/* Footer */}
         {sidebarOpen && (
-          <div className="p-4 border-t border-[#F8F5FF]-500/30">
-            <button 
+          <div className="p-4 border-t border-[#F8F5FF]/30">
+            <button
               onClick={() => handleNavigation("FAQ")}
-            className="text-xs text-[#F8F5FF]">© Help & Support</button>
+              className="flex items-center gap-2 text-xs text-[#F8F5FF]"
+            >
+              <CircleHelp className="w-4 h-4" />
+              Help & Support
+            </button>
           </div>
         )}
       </div>
@@ -163,16 +175,14 @@ const Dashboard = () => {
           >
             {" "}
           </div>
-          <div className="relative w-72 bg-gradient-to-b from-orange-600 to-orange-700 text-white shadow-2xl">
+          <div className="relative w-72 bg-[#5D17EA] text-white shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Mobile Header */}
-              <div className="p-4 border-b border-orange-500/30">
+              <div className="p-4 border-b border-white/30">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-orange-600 font-bold text-lg">
-                        EZ
-                      </span>
+                      <span className="text-white font-bold text-lg">EZ</span>
                     </div>
                     <div>
                       <div className="font-bold text-white">EAZY ERP</div>
@@ -180,7 +190,7 @@ const Dashboard = () => {
                   </div>
                   <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="p-2 hover:bg-orange-500/30 rounded-lg transition-colors"
+                    className="p-2 hover:bg-white/30 rounded-lg transition-colors"
                   >
                     <X size={20} />
                   </button>
@@ -193,9 +203,9 @@ const Dashboard = () => {
                   <button
                     key={index}
                     onClick={() => handleNavigation(item.page)}
-                    className={`w-full flex items-center px-4 py-3 hover:bg-orange-500/30 transition-colors ${
+                    className={`w-full flex items-center px-4 py-3 hover:bg-white/30 transition-colors ${
                       currentPage === item.page
-                        ? "bg-orange-500/40 border-l-4 border-white shadow-md"
+                        ? "bg-white/40 border-l-4 border-white shadow-md"
                         : "border-l-4 border-transparent"
                     }`}
                   >
@@ -206,10 +216,14 @@ const Dashboard = () => {
               </nav>
 
               {/* Mobile Footer */}
-              <div className="p-4 border-t border-orange-500/30">
-                <div className="text-xs text-orange-200 text-center">
-                  © 2025 PHARYNXAI
-                </div>
+              <div className="p-4 border-t border-white/30">
+                <button
+                  onClick={() => handleNavigation("FAQ")}
+                  className="flex items-center justify-center gap-2 text-xs text-white"
+                >
+                  <CircleHelp className="w-4 h-4" />
+                  Help & Support
+                </button>
               </div>
             </div>
           </div>
@@ -230,7 +244,7 @@ const Dashboard = () => {
                 onClick={toggleSidebar}
                 className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               >
-                <Menu size={24} className="text-orange-600" />
+                <Menu size={24} className="text-[#5D17EA]" />
               </button>
               <img
                 src={ezylogo}
@@ -248,7 +262,7 @@ const Dashboard = () => {
         </header>
 
         {/* Page Content - Scrollable */}
-        <main className="h-fit bg-[#F8F5FF]">{renderPage()}</main>
+        <main className="bg-[#F8F5FF]">{renderPage()}</main>
       </div>
     </div>
   );

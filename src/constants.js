@@ -260,3 +260,128 @@ export const faqItems = [
       "Navigate to Dashboard > Reports > Call Analytics. You can filter by date, agent, or campaign to get detailed insights about your calls."
   }
 ];
+
+
+// Mock call data based on the image
+export const callsData = [
+  {
+    id: 1,
+    name: 'Rohan Sharma',
+    flag: '🇮🇳',
+    phone: '+91 81234 56789',
+    company: 'Zenith Health Solutions',
+    leadLogging: '15 Sep 25 | 09:42:15 AM',
+    firstLeadCalling: '15 Sep 25 | 09:45:30 AM',
+    leadTagging: 'Hot Lead',
+    callSummary: "Discussed product demo scheduling.",
+    tagColor: 'bg-red-100 text-red-800'
+  },
+  {
+    id: 2,
+    name: 'Sarah Wilson',
+    flag: '🇺🇸',
+    phone: '+1 202 555 0188',
+    company: 'CloudNova Inc.',
+    leadLogging: '12 Sep 25 | 02:14:50 PM',
+    firstLeadCalling: '12 Sep 25 | 02:18:17 PM',
+    leadTagging: 'Warm Lead',
+    callSummary: "Interested in pricing options.",
+    tagColor: 'bg-yellow-100 text-yellow-800'
+  },
+  {
+    id: 3,
+    name: 'Ankit Mehta',
+    flag: '🇮🇳',
+    phone: '+91 99888 11223',
+    company: 'PharmAI Pvt. Ltd.',
+    leadLogging: '10 Sep 25 | 11:07:43 AM',
+    firstLeadCalling: '10 Sep 25 | 11:10:01 AM',
+    leadTagging: 'Unqualified',
+    callSummary: "Looking for a different service.",
+    tagColor: 'bg-blue-100 text-blue-800'
+  },
+  {
+    id: 4,
+    name: 'Emma Carter',
+    flag: '🇬🇧',
+    phone: '+44 7400 111222',
+    company: 'BioEdge Labs',
+    leadLogging: '09 Sep 25 | 04:20:10 PM',
+    firstLeadCalling: '09 Sep 25 | 04:23:19 PM',
+    leadTagging: 'Hot Lead',
+    callSummary: "Requested immediate callback.",
+    tagColor: 'bg-red-100 text-red-800'
+  },
+  {
+    id: 5,
+    name: 'Kiran Nair',
+    flag: '🇮🇳',
+    phone: '+91 70987 65432',
+    company: 'Medisphere Analytics',
+    leadLogging: '05 Sep 25 | 01:55:30 PM',
+    firstLeadCalling: '05 Sep 25 | 02:02:17 PM',
+    leadTagging: 'Warm Lead',
+    callSummary: "Follow-up scheduled for next week.",
+    tagColor: 'bg-yellow-100 text-yellow-800'
+  },
+  {
+    id: 6,
+    name: 'Liam Brown',
+    flag: '🇨🇦',
+    phone: '+1 613 555 0144',
+    company: 'TheraTech Solutions',
+    leadLogging: '03 Sep 25 | 10:44:21 AM',
+    firstLeadCalling: '03 Sep 25 | 10:47:53 AM',
+    leadTagging: 'Unqualified',
+    callSummary: "Not the right contact person.",
+    tagColor: 'bg-blue-100 text-blue-800'
+  },
+  {
+    id: 7,
+    name: 'Aditi Patel',
+    flag: '🇮🇳',
+    phone: '+91 92345 67890',
+    company: 'NextGen Biopharma',
+    leadLogging: '01 Sep 25 | 05:30:05 PM',
+    firstLeadCalling: '01 Sep 25 | 05:34:17 PM',
+    leadTagging: 'Hot Lead',
+    callSummary: "Very keen on enterprise plan.",
+    tagColor: 'bg-red-100 text-red-800'
+  },
+  {
+    id: 8,
+    name: 'James Lee',
+    flag: '🇸🇬',
+    phone: '+65 8123 4567',
+    company: 'VitaCore Asia',
+    leadLogging: '28 Aug 25 | 03:11:48 PM',
+    firstLeadCalling: '28 Aug 25 | 03:15:05 PM',
+    leadTagging: 'Warm Lead',
+    callSummary: "Asked for brochure via email.",
+    tagColor: 'bg-yellow-100 text-yellow-800'
+  },
+  {
+    id: 9,
+    name: 'Priya Menon',
+    flag: '🇮🇳',
+    phone: '+91 90011 22334',
+    company: 'PharmAI Pvt. Ltd.',
+    leadLogging: '25 Aug 25 | 12:20:43 PM',
+    firstLeadCalling: '25 Aug 25 | 12:24:30 PM',
+    leadTagging: 'Unqualified',
+    callSummary: "Budget constraints.",
+    tagColor: 'bg-blue-100 text-blue-800'
+  },
+  {
+    id: 10,
+    name: 'Oliver Scott',
+    flag: '🇦🇺',
+    phone: '+61 412 345 678',
+    company: 'HealthMetrics AU',
+    leadLogging: '22 Aug 25 | 09:05:17 AM',
+    firstLeadCalling: '22 Aug 25 | 09:09:45 AM',
+    leadTagging: 'Hot Lead',
+    callSummary: "Requested custom integration details.",
+    tagColor: 'bg-red-100 text-red-800'
+  }
+];
